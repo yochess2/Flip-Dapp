@@ -1,1 +1,1 @@
-const contractID = "<ENTER CONTRACT ID HERE>"
+const CONTRACT_ID = "<ENTER CONTRACT ID HERE>";

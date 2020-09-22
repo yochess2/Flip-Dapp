@@ -1,4 +1,7 @@
 const web3 = new Web3(Web3.givenProvider);
+const contractID = CONTRACT_ID;
+const abi = ABI;
+
 let contractInstance;
 
 $(document).ready(() => {
