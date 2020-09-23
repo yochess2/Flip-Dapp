@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>CoinFlip</title>
+    <title>nFlip</title>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
       crossorigin="anonymous"></script>
@@ -19,19 +19,23 @@
   <body>
     <div class="jumbotron jumbotron-fluid">
       <div class="container">
-        <h1 class="display-4">CoinFlip Dapp</h1>
+        <h1 class="display-4">Flip Dapp</h1>
         <p class="lead">Expose your data to the world! </p>
       </div>
     </div>
     <div class="container">
       <div>
+        <h2>Result</h2>
+        <div class="input-group mb-3">
+          <span id="result">No Result Yet</span>
+        </div>
         <h2>Your Wager</h2>
         <div class="input-group mb-3">
           <input type="text" class="form-control" id="wager_input" placeholder="Wager in Ether" >
         </div>
         <button type="button" id="wager_button" class="btn btn-primary">Place Bet!</button>
       </div>
-      <div>
+      <div >
         <h2>Stats</h2>
         <div>
           Dapp Balance: <span id="dapp_balance_output"></span>
