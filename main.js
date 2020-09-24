@@ -7,6 +7,7 @@ let contractInstance;
 
 $(document).ready(() => {
 	window.ethereum.enable().then((accounts) => {
+
 		playerAddress = accounts[0];
 		contractInstance = new web3.eth.Contract(abi, contractId, {from: playerAddress});
 		displayDappBalance();
@@ -30,9 +31,10 @@ function displayPlayerBalance() {
 function inputData() {
 	let config = {
 		value: web3.utils.toWei($('#wager_input').val(), 'ether')
-	}
+	};
+	let flipValue = $('#inlineFormCustomSelect').val() === 'Heads' ? true : false;
 
-	contractInstance.methods.flip().send(config)
+	contractInstance.methods.flip(flipValue).send(config)
 	.on('transactionHash', (hash) => {
 		// console.log('1: ', hash);
 	})
@@ -40,8 +42,9 @@ function inputData() {
 		// console.log('2: ', confirmationNr);
 	})
 	.on('receipt', (receipt) => {
+		let result = receipt.events.flipResult.returnValues.value === '1' ? 'Heads' : 'Tails';
 		let waitingPeriod;
-		let n = 6;
+		let n = 4;
 
 		waitingPeriod = setInterval(() => {
 			$('#result').text(n-=1);
@@ -49,13 +52,13 @@ function inputData() {
 
 		setTimeout(() => {
 			if (receipt.events.flipResult.returnValues.result === true) {
-				$('#result').text('You Won!')
+				$('#result').text(result + '... You Won!')
 			} else {
-				$('#result').text('You Lost!')
+				$('#result').text(result + '... You Lost!')
 			}
 			clearInterval(waitingPeriod);
 			displayDappBalance();
 			displayPlayerBalance();
-		}, 6000);
+		}, 4000);
 	});
 }

@@ -7,6 +7,12 @@ const ABI = [
           "internalType": "bool",
           "name": "result",
           "type": "bool"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
         }
       ],
       "name": "flipResult",
@@ -44,7 +50,13 @@ const ABI = [
     },
     {
       "constant": false,
-      "inputs": [],
+      "inputs": [
+        {
+          "internalType": "bool",
+          "name": "value",
+          "type": "bool"
+        }
+      ],
       "name": "flip",
       "outputs": [],
       "payable": true,
